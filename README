@@ -1,20 +1,28 @@
 CRON
-	*/1     *       *       *       *       /path/to/getblockdata.py > /path/to/blockdata
 	*/1     *       *       *       *       /usr/bin/lynx -source http://domain.com/bitcoin/cron.php
+
+DATA FILES
+	The following files may be used for writing by the web server and require manually providing write permissions:
+	graphs/
 
 bcbuy.php, bcsell.php
 	These scripts require cron.getmarketdata.php to function properly
 
 cron.php
-	Make sure to comment includes that do not exist
+	Make sure to comment includes that do not exist.
+	Uses PHP exec() function to execute a bash script.
 
 cron.getmarketdata.php
-	Make sure can use PHP exec() otherwrise rewrite code to accomodate for this.
+	Make sure can use PHP exec() otherwise rewrite code to accomodate for this.
 	Make sure web server has write access to files open in this script and rename paths accordingly if desired.
 	This file provides the basis of functionality for all other market data related scripts.
 
 cron.statistix.php
 	Make sure web server has write access to files opened in this script.
+	This file produces a data file used for charting flot/gnuplot graphs
+
+getblockdata.sample
+	This is a bash script.  Rename it to "getblockdata" so that the cron.php file can parse it.
 
 index.php
 	Remove the link for donate or make your own donate page.
