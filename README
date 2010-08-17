@@ -1,0 +1,17 @@
+CRON
+	*/1     *       *       *       *       /path/to/getblockdata.py > /path/to/blockdata
+	*/1     *       *       *       *       /usr/bin/lynx -source http://domain.com/bitcoin/cron.php
+
+cron.php
+	Make sure to comment includes that do not exist
+
+cron.statistix.php
+	Make sure web server has write access to files opened in this script.
+
+rpc.php
+	jsonRPCClient.php: Download from http://jsonrpcphp.org/?page=download&lang=en
+	Rename rpcdefault.php to rpc.php and fill in user and pass.
+
+
+statistix.php
+	For graphs to display make sure cron.statistix.php parses without errors.
