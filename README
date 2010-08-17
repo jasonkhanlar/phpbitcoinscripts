@@ -16,6 +16,10 @@ cron.getmarketdata.php
 cron.statistix.php
 	Make sure web server has write access to files opened in this script.
 
+index.php
+	Remove the link for donate or make your own donate page.
+	Remove the flot and gnuplot links as they are not useful yet until I have included them into this repository.
+
 jquery
 	Download from http://jquery.com
 
