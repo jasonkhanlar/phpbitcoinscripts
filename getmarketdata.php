@@ -21,7 +21,7 @@
 		foreach ($currencies as $currency) {
 			// Total Highs, Lows, Volumes
 			$vol = 0; $high = 0; $low = 999999999;
-			while (!isset($tradelines) || $tradelines == "") { $tradelines = file("markets/bitcoinmarket/TRADE.$currency.csv", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
+			unset($tradelines); while (!isset($tradelines) || $tradelines == "") { $tradelines = file("markets/bitcoinmarket/TRADE.$currency.csv", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
 			foreach ($tradelines as $tradeline) {
 				$tradelinedate = strtok($tradeline, ",");
 				$tradelineprice = strtok(",");
@@ -40,7 +40,7 @@
 			$exchanges["bitcoinmarket"][$currency]["vol"] = $vol;
 			
 			// Total Outstanding Asks/Bids in BTC/Currency
-			while (!isset($asklines) || $asklines == "") { $asklines = file("markets/bitcoinmarket/ASK.$currency.csv", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
+			unset($asklines); while (!isset($asklines) || $asklines == "") { $asklines = file("markets/bitcoinmarket/ASK.$currency.csv", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
 			$asksTotalBTC = 0; $asksTotalCur = 0;
 			foreach ($asklines as $askline) {
 				$asklinedate = strtok($askline, ",");
@@ -51,7 +51,7 @@
 			}
 			$exchanges["bitcoinmarket"][$currency]["AsksTotalBTC"] = number_format($asksTotalBTC, 2, ".", ",");
 			$exchanges["bitcoinmarket"][$currency]["AsksTotalCur"] = number_format($asksTotalCur, 2, ".", ",");
-			while (!isset($bidlines) || $bidlines == "") { $bidlines = file("markets/bitcoinmarket/BID.$currency.csv", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
+			unset($bidlines); while (!isset($bidlines) || $bidlines == "") { $bidlines = file("markets/bitcoinmarket/BID.$currency.csv", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
 			$bidsTotalBTC = 0; $bidsTotalCur = 0;
 			foreach ($bidlines as $bidline) {
 				$bidlinedate = strtok($bidline, ",");
