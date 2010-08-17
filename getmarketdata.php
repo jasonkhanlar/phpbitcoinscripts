@@ -40,7 +40,7 @@
 		}
 		
 	// Mt. Gox
-		$data = implode("", file("https://mtgox.com/code/ticker.php"));
+		$data = implode("", file("markets/mtgox/data.ticker"));
 		if (isset($data) && $data != "") {
 			$data = json_decode($data, true);
 			$exchanges["mtgox"]["USD"]["high"] = $data["ticker"]["high"];
