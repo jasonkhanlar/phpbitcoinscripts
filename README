@@ -1,4 +1,5 @@
 CRON
+	*/1     *       *       *       *       /path/to/getblockdata.py > /path/to/blockdata
 	*/1     *       *       *       *       /usr/bin/lynx -source http://domain.com/bitcoin/cron.php
 
 DATA FILES
