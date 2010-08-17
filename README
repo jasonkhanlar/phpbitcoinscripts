@@ -2,11 +2,22 @@ CRON
 	*/1     *       *       *       *       /path/to/getblockdata.py > /path/to/blockdata
 	*/1     *       *       *       *       /usr/bin/lynx -source http://domain.com/bitcoin/cron.php
 
+bcbuy.php, bcsell.php
+	These scripts require cron.getmarketdata.php to function properly
+
 cron.php
 	Make sure to comment includes that do not exist
 
+cron.getmarketdata.php
+	Make sure can use PHP exec() otherwrise rewrite code to accomodate for this.
+	Make sure web server has write access to files open in this script and rename paths accordingly if desired.
+	This file provides the basis of functionality for all other market data related scripts.
+
 cron.statistix.php
 	Make sure web server has write access to files opened in this script.
+
+jquery
+	Download from http://jquery.com
 
 rpc.php
 	jsonRPCClient.php: Download from http://jsonrpcphp.org/?page=download&lang=en
@@ -15,3 +26,6 @@ rpc.php
 
 statistix.php
 	For graphs to display make sure cron.statistix.php parses without errors.
+
+date_default_timezone_set("America/Chicago");
+	Make sure to change instances of these if necessary
