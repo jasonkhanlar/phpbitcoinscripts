@@ -192,7 +192,7 @@
 	//echo microtime()."\n";
 	if (!isset($_GET["showallblocks"])) {
 		echo "\\\n   <a href=\"".$_SERVER["PHP_SELF"]."?showallblocks\">Timestamp data for all ".number_format($blockcount)." blocks</a>  |\n";
-		echo "                 ~".number_format(filesize($blockfile) * 1.23175 / 1024 / 1024, 2)."Mb                 |\n";
+		echo "                 ~".number_format((3065 + 36 * $blockcount) / 1024 / 1024, 2)."Mb                 |\n";
 		echo "-----------------------------------------/";
 	} else echo "\n\n";
 	foreach ($block as $key => $num) {
