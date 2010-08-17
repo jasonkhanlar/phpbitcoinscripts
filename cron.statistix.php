@@ -7,9 +7,9 @@
 
 	$blockfile = "blockdata";
 	$data = file($blockfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); array_pop($data);
-	$gpdata = file("gnuplot.data", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+	$gpdata = file("graphs/blockdata", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 	//echo strtok($data[count($data) - 1], " ")." == ".strtok($gpdata[count($gpdata) - 1], " ");exit;
-	if (isset($gpdata[0]) && strtok($data[count($data) - 1], " ") != strtok($gpdata[count($gpdata) - 1], " ") || isset($_GET["d"])) {
+	if (count($gpdata) == 0 || (isset($gpdata[0]) && strtok($data[count($data) - 1], " ") != strtok($gpdata[count($gpdata) - 1], " ")) || isset($_GET["d"])) {
 		foreach ($data as $line) {
 			$blocks = strtok($line, " ");
 			$date = strtok(" ");
@@ -26,7 +26,7 @@
 
 		$block = array_reverse($block);
 		$acc10 = 0;$acc100 = 0;$acc1000 = 0;$acc10000 = 0;$highAll = 0;$high1000 = 0;$high100 = 0;$high10 = 0;
-		$handle = fopen("gnuplot.data.new", "w");
+		$handle = fopen("graphs/blockdata.temp", "w");
 		foreach ($block as $key => $num) {
 			if (isset($block[$key-1])) {
 				$secsn = $block[$key] - $block[$key-1];
@@ -55,7 +55,7 @@
 			}
 		}
 		fclose($handle);
-		copy("gnuplot.data.new", "gnuplot.data");
+		copy("graphs/blockdata.temp", "graphs/blockdata");
 		function gnuplot() {
 			global $blockcount, $high10, $high100, $high1000, $highAll, $lastblocknum;
 
@@ -75,7 +75,7 @@
 				else $yrange = $y;
 			}
 			if (!isset($_GET["d"])) {
-				$handle = fopen("gnuplot.10.txt", "w");
+				$handle = fopen("graphs/gnuplot/10.txt", "w");
 				//													bg           fg           grid      points
 				//fwrite($handle, "set terminal png font mikachan 8 size 640,480 small x222222 xaaaaaa x04040 xaa0000 xffa500 x66cdaa xcdb5cd xadd8e6 x0000ff xdda0dd x9500d3\n");
 				fwrite($handle, "set terminal png size 640,480 small x222222 xaaaaaa x04040 xaa1234 xffa500 x66cdaa xc366aa x0d68a9 x0000ff xdda0dd x9500d3\n");
@@ -90,14 +90,13 @@
 				fwrite($handle, "set term png\n");
 				fwrite($handle, "set grid\n");	
 				fwrite($handle, "set tmargin 5.5\n");	
-				fwrite($handle, "set output 'gnuplot.10.png'\n");
-				//fwrite($handle, "plot [$lastblocknum:".($lastblocknum - 10)."] 'gnuplot.data' with dots, 'gnuplot.data' smooth bezier, ''gnuplot.data' smooth csplines\n");
+				fwrite($handle, "set output 'graphs/gnuplot/10.png'\n");
 				// Add expected average
-				$data = "plot [".($lastblocknum - 9).":$lastblocknum] 'gnuplot.data' title \"block duration\" with points pointtype 7 pointsize 1, ";
-				$data .= "'gnuplot.data' using 1:3 title \"10 block moving average\" with lines, ";
-				$data .= "'gnuplot.data' using 1:4 title \"100 block moving average\" with lines, ";
-				$data .= "'gnuplot.data' using 1:5 title \"1000 block moving average\" with lines, ";
-				$data .= "'gnuplot.data' using 1:6 title \"10000 block moving average\" with lines\n";
+				$data = "plot [".($lastblocknum - 9).":$lastblocknum] 'graphs/blockdata' title \"block duration\" with points pointtype 7 pointsize 1, ";
+				$data .= "'graphs/blockdata' using 1:3 title \"10 block moving average\" with lines, ";
+				$data .= "'graphs/blockdata' using 1:4 title \"100 block moving average\" with lines, ";
+				$data .= "'graphs/blockdata' using 1:5 title \"1000 block moving average\" with lines, ";
+				$data .= "'graphs/blockdata' using 1:6 title \"10000 block moving average\" with lines\n";
 				fwrite($handle, $data);
 				fclose($handle);
 			}
@@ -118,7 +117,7 @@
 				else $yrange = $y;
 			}
 			if (!isset($_GET["d"])) {
-				$handle = fopen("gnuplot.100.txt", "w");
+				$handle = fopen("graphs/gnuplot/100.txt", "w");
 				//fwrite($handle, "set terminal png x222222 xaaaaaa\n");
 				//													bg           fg           grid      points
 				//fwrite($handle, "set terminal png font mikachan 8 size 640,480 small x222222 xaaaaaa x04040 xaa0000 xffa500 x66cdaa xcdb5cd xadd8e6 x0000ff xdda0dd x9500d3\n");
@@ -133,11 +132,11 @@
 				fwrite($handle, "set term png\n");
 				fwrite($handle, "set grid\n");	
 				fwrite($handle, "set tmargin 4.5\n");	
-				fwrite($handle, "set output 'gnuplot.100.png'\n");
-				$data = "plot [".($lastblocknum - 99).":$lastblocknum] 'gnuplot.data' title \"block duration\" with points pointtype 7 pointsize 0.5, ";
-				$data .= "'gnuplot.data' using 1:4 title \"100 block moving average\" with lines, ";
-				$data .= "'gnuplot.data' using 1:5 title \"1000 block moving average\" with lines, ";
-				$data .= "'gnuplot.data' using 1:6 title \"10000 block moving average\" with lines\n";
+				fwrite($handle, "set output 'graphs/gnuplot/100.png'\n");
+				$data = "plot [".($lastblocknum - 99).":$lastblocknum] 'graphs/blockdata' title \"block duration\" with points pointtype 7 pointsize 0.5, ";
+				$data .= "'graphs/blockdata' using 1:4 title \"100 block moving average\" with lines, ";
+				$data .= "'graphs/blockdata' using 1:5 title \"1000 block moving average\" with lines, ";
+				$data .= "'graphs/blockdata' using 1:6 title \"10000 block moving average\" with lines\n";
 				fwrite($handle, $data);
 				fclose($handle);
 			}
@@ -158,7 +157,7 @@
 				else $yrange = $y;
 			}
 			if (!isset($_GET["d"])) {
-				$handle = fopen("gnuplot.1000.txt", "w");
+				$handle = fopen("graphs/gnuplot/1000.txt", "w");
 				//													bg           fg           grid      points
 				//fwrite($handle, "set terminal png font mikachan 8 size 640,480 small x222222 xaaaaaa x04040 xaa0000 xffa500 x66cdaa xcdb5cd xadd8e6 x0000ff xdda0dd x9500d3\n");
 				fwrite($handle, "set terminal png size 640,480 small x222222 xaaaaaa x04040 xaa1234 xffa500 x66cdaa xc366aa x0d68a9 x0000ff xdda0dd x9500d3\n");
@@ -172,10 +171,10 @@
 				fwrite($handle, "set term png\n");
 				fwrite($handle, "set grid\n");	
 				fwrite($handle, "set tmargin 3.5\n");	
-				fwrite($handle, "set output 'gnuplot.1000.png'\n");
-				$data = "plot [".($lastblocknum - 999).":$lastblocknum] 'gnuplot.data' title \"block duration\" with points pointtype 7 pointsize 0.25, ";
-				$data .= "'gnuplot.data' using 1:5 title \"1,000 block moving average\" with lines\n";
-				$data .= "'gnuplot.data' using 1:6 title \"10000 block moving average\" with lines\n";
+				fwrite($handle, "set output 'graphs/gnuplot/1000.png'\n");
+				$data = "plot [".($lastblocknum - 999).":$lastblocknum] 'graphs/blockdata' title \"block duration\" with points pointtype 7 pointsize 0.25, ";
+				$data .= "'graphs/blockdata' using 1:5 title \"1,000 block moving average\" with lines\n";
+				$data .= "'graphs/blockdata' using 1:6 title \"10000 block moving average\" with lines\n";
 				fwrite($handle, $data);
 				fclose($handle);
 			}
@@ -196,7 +195,7 @@
 				else $yrange = $y;
 			}
 			if (!isset($_GET["d"])) {
-				$handle = fopen("gnuplot.all.txt", "w");
+				$handle = fopen("graphs/gnuplot/all.txt", "w");
 				//													bg           fg           grid      points
 				//fwrite($handle, "set terminal png font mikachan 8 size 640,480 small x222222 xaaaaaa x04040 xaa0000 xffa500 x66cdaa xcdb5cd xadd8e6 x0000ff xdda0dd x9500d3\n");
 				fwrite($handle, "set terminal png size 640,480 small x222222 xaaaaaa x04040 xaa1234 xffa500 x66cdaa xc366aa x0d68a9 x0000ff xdda0dd x9500d3\n");
@@ -210,16 +209,15 @@
 				fwrite($handle, "set term png\n");
 				fwrite($handle, "set grid\n");	
 				fwrite($handle, "set tmargin 3.5\n");	
-				fwrite($handle, "set output 'gnuplot.all.png'\n");
-				//fwrite($handle, "plot [$lastblocknum:0] 'gnuplot.data' smooth csplines\n");
-				$data = "plot [0:$lastblocknum] 'gnuplot.data' title \"block duration\" with dots, ";
-				$data .= "'gnuplot.data' using 1:6 title \"10,000 block moving average\" with lines\n";
+				fwrite($handle, "set output 'graphs/gnuplot/all.png'\n");
+				$data = "plot [0:$lastblocknum] 'graphs/blockdata' title \"block duration\" with dots, ";
+				$data .= "'graphs/blockdata' using 1:6 title \"10,000 block moving average\" with lines\n";
 				fwrite($handle, $data);
 				fclose($handle);
-				exec("cat gnuplot.10.txt|gnuplot");
-				exec("cat gnuplot.100.txt|gnuplot");
-				exec("cat gnuplot.1000.txt|gnuplot");
-				exec("cat gnuplot.all.txt|gnuplot");
+				exec("cat graphs/gnuplot/10.txt|gnuplot");
+				exec("cat graphs/gnuplot/100.txt|gnuplot");
+				exec("cat graphs/gnuplot/1000.txt|gnuplot");
+				exec("cat graphs/gnuplot/all.txt|gnuplot");
 			}
 		}
 		gnuplot();

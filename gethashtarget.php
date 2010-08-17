@@ -54,7 +54,7 @@
 		$nbytes = ($c >> 24) & 0xFF;
 		return bcmul($c & 0xFFFFFF,bcpow(2,8 * ($nbytes - 3)));
 	}
-	$data = file("blockdata", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+	while (!isset($data) || $data == "") { $data = file("blockdata", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
 	array_pop($data);
 	$last = array_pop($data);
 	strtok($last, " ");

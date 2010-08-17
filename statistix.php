@@ -29,10 +29,10 @@
  </head>
  <body>
   <span class="gnuplot">
-   <img src="gnuplot.10.png"/><br/>
-   <img src="gnuplot.100.png"/><br/>
-   <img src="gnuplot.1000.png"/><br/>
-   <img src="gnuplot.all.png"/><br/>
+   <img src="graphs/gnuplot/10.png"/><br/>
+   <img src="graphs/gnuplot/100.png"/><br/>
+   <img src="graphs/gnuplot/1000.png"/><br/>
+   <img src="graphs/gnuplot/all.png"/><br/>
   </span>
   <pre>
 <?

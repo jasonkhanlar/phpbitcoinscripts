@@ -64,18 +64,30 @@
    </div></div>
    <div class="grid_8"><div class="section">
 	<div class="header">Markets</div>
-	<div class="grid_2 alpha varl">Site / Market</div>
-	<div class="grid_1 alpha var">Bid</div>
-	<div class="grid_1 alpha var">Ask</div>
-	<div class="grid_1 alpha var">Last</div>
-	<div class="grid_1 alpha var">Low</div>
-	<div class="grid_1 alpha var">High</div>
-	<div class="grid_1 alpha var">24hr Vol.</div>
+	<div class="grid_2 alpha varl"><small>Site / Market</small></div>
+	<div class="grid_1 alpha var"><small>Bid</small></div>
+	<div class="grid_1 alpha var"><small>Ask</small></div>
+	<div class="grid_1 alpha var"><small>Last</small></div>
+	<div class="grid_1 alpha var"><small>Low</small></div>
+	<div class="grid_1 alpha var"><small>High</small></div>
+	<div class="grid_1 alpha var"><small>24hr Vol.</div>
 	<div class="grid_2 alpha val">BCM / LR USD</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDbid">0</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDask">0</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDlast">0</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDlow">0</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDhigh">0</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDvol">0</div>
 	<div class="grid_2 alpha val">BCM / MB USD</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDbid">0</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDask">0</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDlast">0</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDlow">0</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDhigh">0</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDvol">0</div>
 	<div class="grid_2 alpha val">BCM / PayPal USD</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDbid">0</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDask">0</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDlast">0</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDlow">0</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDhigh">0</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDvol">0</div>
 	<div class="grid_2 alpha val">BCM / Pecunix GAU</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUbid">0</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUask">0</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUlast">0</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUlow">0</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUhigh">0</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUvol">0</div>
 	<div class="grid_2 alpha val">MtGox / PayPal USD</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDbuy">0</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDsell">0</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDlast">0</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDlow">0</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDhigh">0</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDvol">0</div>
+
+	<div class="grid_2 alpha varl"><small>Total Outstanding</small></div>
+	<div class="grid_1 alpha var"><small>Asks&thinsp;(BTC)</small></div>
+	<div class="grid_1 alpha var"><small>Asks&thinsp;(Cur)</small></div>
+	<div class="grid_1 alpha var"><small>Bids&thinsp;(BTC)</small></div>
+	<div class="grid_1 alpha var"><small>Bids&thinsp;(Cur)</small></div>
+	<div class="grid_2 alpha var">&nbsp;</div>
+	<div class="grid_2 alpha val">BCM / LR USD</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDAsksTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDAsksTotalCur">0</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDBidsTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketbcmLibertyReserveUSDBidsTotalCur">0</div><div class="grid_2 alpha valr">&nbsp;</div>
+	<div class="grid_2 alpha val">BCM / MB USD</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDAsksTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDAsksTotalCur">0</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDBidsTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketbcmMoneyBookersUSDBidsTotalCur">0</div><div class="grid_2 alpha valr">&nbsp;</div>
+	<div class="grid_2 alpha val">BCM / PayPal USD</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDAsksTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDAsksTotalCur">0</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDBidsTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketbcmPayPalUSDBidsTotalCur">0</div><div class="grid_2 alpha valr">&nbsp;</div>
+	<div class="grid_2 alpha val">BCM / Pecunix GAU</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUAsksTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUAsksTotalCur">0</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUBidsTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketbcmPecunixGAUBidsTotalCur">0</div><div class="grid_2 alpha valr">&nbsp;</div>
+	<div class="grid_2 alpha val">MtGox / PayPal USD</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDAsksTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDAsksTotalUSD">0</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDBidsTotalBTC">0</div><div class="grid_1 alpha valr" id="getmarketmtgoxUSDBidsTotalUSD">0</div><div class="grid_2 alpha var">&nbsp;</div>
    </div></div>
    <div class="grid_8"><div class="section">
 	<div class="header">Buy / Sell</div>
@@ -133,16 +145,14 @@
 		$.ajax({ url: 'getmarketdata.php', success: function(data) { 
 		var mdata = eval("("+data+")");
 		var currencies = ["MoneyBookersUSD", "PecunixGAU", "PayPalUSD", "LibertyReserveUSD"];
-		var types = ["ask", "bid", "last", "vol", "high", "low"];
+		var types = ["ask", "bid", "last", "vol", "high", "low", "AsksTotalBTC", "AsksTotalCur", "BidsTotalBTC", "BidsTotalCur"];
 		for (var i = 0; i < currencies.length; i++) {
 			for (var j = 0; j < types.length; j++) {
-				$("#getmarketbcm"+currencies[i]+types[j]).html(mdata.bitcoinmarket[currencies[i]][types[j]]+"");
+				$("#getmarketbcm"+currencies[i]+types[j]).html("<small>"+mdata.bitcoinmarket[currencies[i]][types[j]]+"</small>");
 			}
 		}
-		var types = ["buy", "sell", "last", "vol", "high", "low"];
-		for (var j = 0; j < types.length; j++) {
-				$("#getmarketmtgoxUSD"+types[j]).html(mdata.mtgox.USD[types[j]]+"");
-			}		
+		var types = ["buy", "sell", "last", "vol", "high", "low", "AsksTotalBTC", "AsksTotalUSD", "BidsTotalBTC", "BidsTotalUSD"];
+		for (var j = 0; j < types.length; j++) $("#getmarketmtgoxUSD"+types[j]).html("<small>"+mdata.mtgox.USD[types[j]]+"</small>");
 		} });
 	}
 	function upd1() {
