@@ -194,13 +194,16 @@
 		echo "\\\n   <a href=\"".$_SERVER["PHP_SELF"]."?showallblocks\">Timestamp data for all ".number_format($blockcount)." blocks</a>  |\n";
 		echo "                 ~".number_format((3065 + 36 * $blockcount) / 1024 / 1024, 2)."Mb                 |\n";
 		echo "-----------------------------------------/";
-	} else echo "\n\n";
-	foreach ($block as $key => $num) {
-		$secsn = $block[$key] - ((isset($block[$key-1])) ? $block[$key-1] : 0);
-		$secs = ($secsn == 1) ? "$secsn second " : "$secsn seconds";
-		$secs = str_repeat(" ", 15 - strlen($secs)).$secs;
-		if (isset($block[$key-1])) if (isset($_GET["showallblocks"])) echo "$secs to find block $key\n";
-		else if (isset($_GET["showallblocks"])) echo "  unknown time to find block $key\n";
+	} else {
+		echo "\n\n";
+		$block = array_reverse($block, true);
+		foreach ($block as $key => $num) {
+			$secsn = $block[$key] - ((isset($block[$key-1])) ? $block[$key-1] : 0);
+			$secs = ($secsn == 1) ? "$secsn second " : "$secsn seconds";
+			$secs = str_repeat(" ", 15 - strlen($secs)).$secs;
+			if (isset($block[$key-1])) echo "$secs to find block $key\n";
+			ob_flush(); flush();
+		}
 	}
 	function fill($str, $len) { return str_repeat(" ", $len - strlen($str)).$str; }
 ?>

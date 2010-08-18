@@ -8,7 +8,7 @@
 	$now = date("U");
 
 	$blockfile = "blockdata";
-	while (!isset($data) || $data == "") { $data = file($blockfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
+	unset($data); while (!isset($data) || $data == "") { $data = file($blockfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); sleep(0.1); }
 	array_pop($data);
 	foreach ($data as $line) {
 		$blocks = strtok($line, " ");
